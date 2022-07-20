@@ -2,10 +2,11 @@
 rails６系をMySQLで、Dockerで動かす 参考 https://zenn.dev/tmasuyama1114/articles/4ed199ce0478e7
 
 ## 構築手順
-bundle install docker-compose run web bundle exec bundle install
+- `bundle install docker-compose run web bundle exec bundle install`
 docker-compose run web rails bundle install だと、エラー
 
-➜  rails6-docker-mysql git:(main) docker-compose run web rails bundle install      
+```
+rails6-docker-mysql git:(main) docker-compose run web rails bundle install      
 Creating network "rails6-docker-mysql_default" with the default driver
 Creating rails6-docker-mysql_db_1 ... done
 Creating rails6-docker-mysql_web_run ... done
@@ -17,6 +18,10 @@ Don't know how to build task 'bundle' (See the list of available tasks with `rai
 /myapp/bin/spring:7:in `<top (required)>'
 (See full trace by running task with --trace)
 ERROR: 1
-db作る docker-compose run web rails db:create
+```
 
-ローカルで動かす docker-compose up
+- db作る 
+`docker-compose run web rails db:create`
+
+- ローカルで動かす 
+`docker-compose up`
