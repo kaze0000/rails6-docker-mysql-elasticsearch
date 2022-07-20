@@ -1,5 +1,7 @@
+## 概要
 rails６系をMySQLで、Dockerで動かす 参考 https://zenn.dev/tmasuyama1114/articles/4ed199ce0478e7
 
+## 構築手順
 bundle install docker-compose run web bundle exec bundle install
 docker-compose run web rails bundle install だと、エラー
 
