@@ -19,3 +19,32 @@ services:
       - "3000:3000"
     depends_on:
       - db
+# https://zenn.dev/komisan19/articles/f752c0d0299a92
+# https://qiita.com/yamashun/items/6ecaa6f161b4cf283db3
+# 7.21 10:11 途中経過
+# 現状:
+# Kubanaの画面にアクセスできない
+# esはcurlで叩いて期待する値返ってくる
+# Rails sできない
+  es:
+    build: ./docker/es
+    container_name: es_sample
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.16.2
+    environment:
+      SERVER_NAME: localhost:5601
+      ELASTICSEARCH_URL: http://es_sample:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - es
