@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   db:
     image: mysql:5.7
@@ -11,24 +11,20 @@ services:
       - ./tmp/db:/var/lib/mysql
 
   web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
     depends_on:
       - db
-# https://zenn.dev/komisan19/articles/f752c0d0299a92
-# https://qiita.com/yamashun/items/6ecaa6f161b4cf283db3
-# 7.21 10:11 途中経過
-# 現状:
-# Kubanaの画面にアクセスできない
-# esはcurlで叩いて期待する値返ってくる
-# Rails sできない
-  es:
-    build: ./docker/es
-    container_name: es_sample
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/myapp
+    command: bundle exec rails server -b 0.0.0.0
+
+  elasticsearch:
+    build: ./docker/elasticsearch
+    container_name: elasticsearch_1
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
@@ -39,12 +35,12 @@ services:
     ports:
       - 9200:9200
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.16.2
-    environment:
-      SERVER_NAME: localhost:5601
-      ELASTICSEARCH_URL: http://es_sample:9200
-    ports:
-      - 5601:5601
-    depends_on:
-      - es
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:7.16.2
+  #   environment:
+  #     SERVER_NAME: localhost:5601
+  #     ELASTICSEARCH_URL: http://es_sample:9200
+  #   ports:
+  #     - 5601:5601
+  #   depends_on:
+  #     - es
