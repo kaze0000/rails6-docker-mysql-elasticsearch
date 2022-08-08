@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/elastic/elasticsearch-rails.git
+  revision: 606f3482e298fab0afc5a083468f23ec7464b0d3
+  branch: 6.x
+  specs:
+    elasticsearch-model (6.1.0)
+      activesupport (> 3)
+      elasticsearch (~> 6)
+      hashie
+    elasticsearch-rails (6.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,10 +92,42 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    elasticsearch (6.8.3)
+      elasticsearch-api (= 6.8.3)
+      elasticsearch-transport (= 6.8.3)
+    elasticsearch-api (6.8.3)
+      multi_json
+    elasticsearch-transport (6.8.3)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
+    faraday (1.10.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -105,6 +148,8 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.16.2)
     msgpack (1.5.3)
+    multi_json (1.15.0)
+    multipart-post (2.2.3)
     mysql2 (0.5.4)
     nio4r (2.5.8)
     nokogiri (1.13.7)
@@ -153,6 +198,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.5.0)
     rexml (3.2.5)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -215,6 +261,8 @@ DEPENDENCIES
   bulma-rails (~> 0.7.2)
   byebug
   capybara (>= 3.26)
+  elasticsearch-model!
+  elasticsearch-rails!
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)

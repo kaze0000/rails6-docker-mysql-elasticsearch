@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # oroginal
 gem "bulma-rails", "~> 0.7.2"
+gem 'elasticsearch-rails', git: 'https://github.com/elastic/elasticsearch-rails.git', branch: '6.x'
+gem 'elasticsearch-model', git: 'https://github.com/elastic/elasticsearch-rails.git', branch: '6.x'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
