@@ -27,7 +27,7 @@ services:
 
   elasticsearch:
     build: ./docker/elasticsearch
-    container_name: elasticsearch_1
+    container_name: myapp-elasticsearch
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node

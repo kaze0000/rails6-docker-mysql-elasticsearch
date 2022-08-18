@@ -8,5 +8,6 @@
 #   }
 #   Elasticsearch::Model.client = Elasticsearch::Client.new(config)
 
-config = { host: "localhost" || "localhost:9200/" || "elasticsearch:9200/" , port: '443' }
+# コンテナ名に合わせる
+config = { hosts: "myapp-elasticsearch" }
 Elasticsearch::Model.client = Elasticsearch::Client.new(config)
