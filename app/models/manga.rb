@@ -1,3 +1,5 @@
+require 'elasticsearch/model'
+
 class Manga < ApplicationRecord
   # モデルを検索できるようにするために必須の設定
   include Elasticsearch::Model

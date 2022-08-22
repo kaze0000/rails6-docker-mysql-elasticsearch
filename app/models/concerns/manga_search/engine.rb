@@ -48,12 +48,24 @@ module MangaSearch
         # すでにindexを作成済みの場合は削除する
         client.indices.delete index: self.index_name rescue nil
         # indexを作成する
-      #   binding.irb
         client.indices.create(index: self.index_name,
           body: {
               settings: self.settings.to_hash,
               mappings: self.mappings.to_hash
               })
+      end
+
+      def search(query)
+        client.search({
+          query: {
+            multi_match: {
+               fields: %w(publisher author category title description),
+               type: 'cross_fields',
+               query: query,
+               operator: 'and'
+            }
+          }
+        })
       end
     end
   end

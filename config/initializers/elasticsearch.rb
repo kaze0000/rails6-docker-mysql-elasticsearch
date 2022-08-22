@@ -9,5 +9,5 @@
 #   Elasticsearch::Model.client = Elasticsearch::Client.new(config)
 
 # コンテナ名に合わせる
-config = { hosts: "myapp-elasticsearch" }
+config = { hosts: "myapp-elasticsearch" || "myapp-elasticsearch:9200/" }
 Elasticsearch::Model.client = Elasticsearch::Client.new(config)
