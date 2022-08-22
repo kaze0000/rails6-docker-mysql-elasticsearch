@@ -1,9 +1,9 @@
 ## 概要
-rails６系をMySQLで、Dockerで動かす 参考 https://zenn.dev/tmasuyama1114/articles/4ed199ce0478e7
+- rails６系をMySQLで、Dockerで動かす 参考 https://zenn.dev/tmasuyama1114/articles/4ed199ce0478e7
 
+- そこにElastic Searchを導入する 参考 https://qiita.com/fuqda/items/d568aaf6b28f2d348b0f
 ## 構築手順
 - bundle installをする
-
 `docker-compose run web bundle exec bundle install`
 
 ＊ `docker-compose run web rails bundle install` だと、エラー↓
@@ -23,8 +23,6 @@ Don't know how to build task 'bundle' (See the list of available tasks with `rai
 ERROR: 1
 ```
 
-- db作る 
-`docker-compose run web rails db:create`
+- db作る `docker-compose run web rails db:create`
 
-- ローカルで動かす 
-`docker-compose up`
+- ローカルで動かす `docker-compose up`
